@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drap and drop</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<script>
+		$(document).ready(function(){	
+			//draggable
+			$("#mydraggable").draggable({
+				//containment:"parent"
+				//scroll:true
+				//revert:true,
+				//helper:"clone",
+				//axis:"x"
+				drag:function(){
+					$(this).css("background-color","green");
+				},
+				stop:function(){
+					$(this).css("background-color","yellow");
+				}
+			});
+			//droppable
+			$('#mydroppable').droppable({
+				// thuộc tính accept khi selector là dấu * là tất cả, mà tất cả thì không cần viết cũng được
+				accept:"#mydraggable",
+				//khi nhấn chuột và có thể cả kéo đi nếu có của 1 trong các đối tượng 
+				//trong mục accept thì activate sẽ áp dụng function
+				activate:function(){
+					$(this).css("background-color","blue");
+				},
+				over:function(){
+					$(this).css("background-color","yellow");
+				},
+				out:function(){
+					$(this).css("background-color","green");
+				},
+				//khi thả vào trong hoặc >=1 nửa ở trong của đối tượng kéo vào thì drop này mới áp dụng được
+				drop:function(){
+					$(this).css("background-color","pink");
+				},
+				//deactivate là ngược lại khi thả chuột
+				deactivate:function(){
+					$('#mydraggable').css("border","5px solid black");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div style="clear: both;"></div>
+	<div id="pr_draggale" style="width: 600px;height: 500px;border: 1px solid #ccc;/*overflow: scroll;*/float: left;">
+		<div id="mydraggable" style="width: 100px;height:100px;background-color: #ff0000"></div>
+	</div>
+	<div id="mydroppable" style="float: left;width: 300px;height: 300px;border: 1px solid #ff6a00"></div>
+	<div style="clear: both;"></div>
+</body>
+</html>

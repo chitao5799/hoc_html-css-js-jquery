@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>acording,autocomplete,menu</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<style>
+		#my-menu{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: white;
+		}
+		.ngang{
+			float: left;
+		}
+		#con {
+			margin-top: 30px;
+		}
+
+
+	</style>
+	<script>
+		$(document).ready(function(){	
+			//accordion
+			$('#my-accordion').accordion({
+				heightStyle:'content'
+			});
+			//autocomplete
+			var data=["thư viện lập trình","thời tiết hôm nay","my email","nhật bản"];
+			$('#mycomplete').autocomplete({
+				delay:200,
+				source:data
+			});
+			//menu
+			$('#my-menu').menu();
+		});
+	</script>
+</head>
+<body>
+	<div id="my-accordion" style="width: 300px">
+		<h3>tab thứ 1</h3>
+		<div>nội dung thứ 1</div>
+		<h3>tab thứ 2</h3>
+		<div>nội dung thứ 2</div>
+		<div>tab thứ 3</div>
+		<p>nội dung thứ 3</p>
+	</div>
+	<br/>
+	<input type="text" id="mycomplete"/>
+	<br/>
+	<ul id="my-menu" style="width: 400px">
+		<li class="ngang">
+			<div>menu a</div>
+			<ul id="con">
+				<li>
+					<div> a1</div>
+					<ul id="chau" style="width: 100px">
+						<li> <div> a1-1</div></li>
+						<li><div> a1-2</div></li>
+					</ul>
+				</li>
+				<li><div> a2</div></li>
+			</ul>
+		</li>
+		<li class="ui-state-disabled ngang">
+			<div>menu b</div>
+		</li>
+		<li class="ngang">
+			<div>menu c</div>
+		</li>
+	</ul>
+</body>
+</html>

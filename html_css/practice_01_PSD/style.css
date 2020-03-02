@@ -1,0 +1,33 @@
+#wrapper{
+	background-color: #e9eaed;
+}
+body{font-family: tahoma;line-height: 22px;font-size: 13px;}
+#header,#footer{
+	background-color: #202d39;
+}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.wp_inner{
+width: 1200px; margin: 0px auto;
+
+}/*căn giữa các mục có tên class như này*/
+.float-left{float: left;}
+.float-right{float: right;}
+#header{padding: 30px 0px 23px 0px;}
+#header a{color: #fff;}
+#logo{font-size: 20px;}
+#main-menu li{float: left;}
+#main-menu li a{padding: 8px 15px;text-transform: uppercase;font-size: 14px;}
+#content{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding: 50px 60px;
+}
+#content .title-page{font-size: 20px;margin-bottom: 20px}
+#content .intro-img { font-style: italic;padding: 20px 0px; }
+#footer .top{padding: 38px 60px;}
+#footer {color: #fff;}
+#footer .top h3{ padding: 10px 0px; font-size: 18px;font-weight: normal; }
+#footer a{text-decoration: none;color: #e3e3e3;}
+.copy-right{padding: 16px 0px;background-color: #111a22;color: #e8e8e8;}

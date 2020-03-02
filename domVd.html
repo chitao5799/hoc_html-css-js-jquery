@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom vd</title>
+	<style>
+		#div1{
+		  width:200px;
+		  height:100px;
+		  background-color:#3C9;
+		}
+		#div2{
+		  width:200px;
+		  height:100px;
+		  background-color:#F00; 
+		}
+	</style>
+	<script>
+		function welcomeWhenFinishLoad(){
+		alert("tài liệu đã tải xong.");
+		}
+		function setupEventForDiv(){
+		var obj=document.getElementById('div1');
+		obj.onclick=div_1_clicked;
+		document.getElementById('div2').onmouseover=f1;
+		document.getElementById('div2').onmouseout=f2;
+
+		}
+		//hàm này được gọi khi click lên div1
+		function div_1_clicked(){
+		var obj=document.getElementById('div1');
+		obj.innerHTML=(new Date()).getSeconds();
+		obj.setAttribute('style','background-color:green');
+		}
+		//hàm này được gọi khi rê chuột lên div2
+		function f1(){
+			var obj =document.getElementById('div2');
+			obj.innerHTML=(new Date()).getSeconds();
+			obj.setAttribute('style','background-color:yellow');
+		}
+		//hàm này được gọi khi rê chuột ra khỏi div2
+		function f2(){
+			var obj =document.getElementById('div2');
+			obj.innerHTML='Out';
+			obj.setAttribute('style','background-color:blue');
+			welcomeWhenFinishLoad();
+		}
+		function clicked(){
+			alert("hello");
+		}
+	</script>
+</head>
+ <body onload="setupEventForDiv()">
+     <div id="div1"> </div>
+     <div id="div2"></div>
+     <div onclick="clicked()" style="width: 100px; padding: 5px;background-color: #069;color: #fff;cursor: pointer">bắt đầu</div>
+   </body>
+</html>

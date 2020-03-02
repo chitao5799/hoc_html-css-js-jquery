@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery vd1	</title>
+	<script type="text/javascript" src="E:\\Hoc_html_css_javascript\\jquery_3.4.1.js"></script>
+	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
+	<style>
+		#hinh,#hinh2{
+			width: 500px;
+			height: 500px;
+		}
+		#btChangeImage,#IncreaseImage{
+			margin: 10px;
+			padding: 10px;
+			width: 80px;
+			text-align: center;
+			border:  1px solid #ccc;
+			cursor: pointer;
+		}
+		#hinh2.w1{
+			width: 550px;
+		}
+		#hinh2.w2{
+			width: 650px;
+		}
+		#hinh2.w3{
+			width: 800px;
+		}
+	</style>
+	<script>
+		//chờ tài liệu tải song.
+		$(document).ready(function(){
+			//lệnh trong đây chỉ chạy khi dữ liệu tải song
+			var bt=document.getElementById('btChangeImage');
+			bt.onclick=ChangeImage;
+			var b=document.getElementById('IncreaseImage');
+			b.onclick=ChangeIncreaseImage;
+		});
+
+		var CurrentImage=1;
+		function ChangeImage(){
+			if(CurrentImage===1){
+				$('#hinh').attr("src","E:\\DownLoad\\Sierra for Windows 10\\Themes\\Themes For 10 Build 10240\\Sierra\\Wallpapers\\Sierra 4.jpg");
+				CurrentImage=2;
+			}
+			else{
+				$('#hinh').attr("src","E:\\DownLoad\\Sierra for Windows 10\\Themes\\Themes For 10 Build 10240\\Sierra\\Wallpapers\\Sierra 1.jpg");
+				CurrentImage=1;
+			}
+		}
+
+		var CurrentImage2=1;
+		function ChangeIncreaseImage(){
+			if(CurrentImage2==1){
+				$('#hinh2').addClass('w2');
+				CurrentImage2=2;
+			}
+			else if(CurrentImage2==2){
+				$('#hinh2').addClass('w3');
+				CurrentImage2=3;
+			}else{
+				$('#hinh2').removeClass('w2').removeClass('w3');
+				CurrentImage2=1;
+			}
+
+			var current_css_width_value=$('#hinh2').css('width');
+			document.getElementById('display_width').innerHTML=current_css_width_value;
+
+		}
+	</script>
+</head>
+<body>
+	<div id="btChangeImage">đổi hình</div>
+	<img id="hinh"	src="E:\\DownLoad\\Sierra for Windows 10\\Themes\\Themes For 10 Build 10240\\Sierra\Wallpapers\\Sierra 1.jpg" alt="hình"/>
+	<div id="IncreaseImage">tăng rộng</div>
+	<div id="display_width"></div>
+	<img id="hinh2" class="w1" src="E:\\DownLoad\\Sierra for Windows 10\\Themes\\Themes For 10 Build 10240\\Sierra\Wallpapers\\Sierra 2.jpg" alt="hình"/>
+
+</body>
+</html>

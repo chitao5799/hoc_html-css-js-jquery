@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chuyển động</title>
+	<script type="text/javascript" src="E:\\Hoc_html_css_javascript\\jquery_3.4.1.js"></script>
+	<style>
+		.btbclick{
+			margin: 20px 0px 20px 20px;
+			padding: 10px 15px;
+			width: 100px;
+			float: left;
+			text-align: center;
+			background-color: #333;
+			color: #fff;
+			cursor:pointer;
+		}
+		#hinh{
+			width: 400px;
+			height:400px;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			setupEvent();
+		});
+		function setupEvent(){
+			$('#show').click(function(){
+				$('#hinh').fadeIn(500,function(){//show//slideDown
+					alert('đã show');
+				});
+			});
+			$('#hide').click(function(){
+				$('#hinh').fadeOut(5000); //hide//slideUp
+			});
+			$('#change').click(function(){
+				$('#hinh').fadeToggle(500);//toggle//slideToggle
+			});
+			$('#ft').keyup(function(){
+				var x=parseFloat($(this).val());
+				$('#hinh').fadeTo(500,x);
+			})
+		}
+	</script>
+</head>
+<body>
+	<div id="show" class="btbclick">click show</div>
+	<div id="hide" class="btbclick">click hide</div>
+	<div id="change" class="btbclick">click change</div><br/>
+	<div style="clear: both;"></div>
+	<input type="text" id="ft" class="btbclick" placeholder="số 0 1" />
+	<img id="hinh"	src="E:\\DownLoad\\Sierra for Windows 10\\Themes\\Themes For 10 Build 10240\\Sierra\Wallpapers\\Sierra 1.jpg" alt="hình"/>
+</body>
+</html>

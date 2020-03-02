@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="E:\\Hoc_html_css_javascript\\jquery_3.4.1.js"></script>
+	<style>
+		.btb{
+			margin: 10px;
+			padding: 10px;
+			background-color: #f1f1f1;
+			text-align: center;
+			float: left;
+			width: 100px;
+			cursor: pointer;
+		}
+		#div1{
+			background-color: #ff9;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			// //cài đặt sự kiện 1
+			// document.getElementById('btb1').onclick=function(){
+			// 	var html=$('#div1').html();
+			// 	alert(html);
+			// }
+			// //cài đặt sự kiện 2
+			// document.getElementById('btb2').onclick=function(){
+			// 	$('#div1').html("<a href='#'>liên kết</a> nội dung mới <b>in đậm</b>");				
+			// }
+			// //cài đặt sự kiện 3
+			// document.getElementById('btb3').onclick=function(){
+			// 	var text=$('#div1').text();
+			// 	alert(text);
+			// }
+			// //cài đặt sự kiện 4
+			// document.getElementById('btb4').onclick=function(){
+			// 	$('#div1').text('nội dung mới');
+			// }
+			// ---------phần 2
+			//cài đặt sự kiện 1
+			// document.getElementById('btb1').onclick=function(){
+			// 	$('#div1').append("<b>nội dung mới.<b>");
+			// }
+			// //cài đặt sự kiện 2
+			// document.getElementById('btb2').onclick=function(){
+			// 	$('#div1').prepend("<b>nội dung in đậm mới.<b>");			
+			// }
+			// //cài đặt sự kiện 3 - giống sự kiện 1
+			// document.getElementById('btb3').onclick=function(){
+			// 	$("<b>nội dung in đậm mới.<b>").appendTo('#div1');
+			// }
+			// //cài đặt sự kiện 4 - giống 2
+			// document.getElementById('btb4').onclick=function(){
+			// 	$('<b>nội dung in đậm mới.<b>').prependTo('#div1');
+			// }
+			// ----phần 3
+			//cài đặt sự kiện 1
+			// document.getElementById('btb1').onclick=function(){
+			// 	$('#div1').after("<div style='background-color:green'>abc</div>");
+			// }
+			// ///cài đặt sự kiện 2
+			// document.getElementById('btb2').onclick=function(){
+			// 	$('#div1').before("<div style='background-color:yellow'>123</div>");		
+			// }
+			// //cài đặt sự kiện 3 - giống sự kiện 1
+			// document.getElementById('btb3').onclick=function(){
+			// 	$("<div style='background-color:green'>abc</div>").insertAfter('#div1');
+			// }
+			// //cài đặt sự kiện 4 - giống sự kiện 2
+			// document.getElementById('btb4').onclick=function(){
+			// 	$("<div style='background-color:yellow'>123</div>").insertBefore('#div1');
+			// }
+			//phần 4
+			//cài đặt sự kiện 1
+			// document.getElementById('btb1').onclick=function(){
+			// 	$('span').unwrap(); //loại bỏ thẻ cha trực tiếp của thẻ span nhưng nếu có thẻ ông của span thì không bị xóa
+			// }
+			// ///cài đặt sự kiện 2
+			// document.getElementById('btb2').onclick=function(){
+			// 	$('#div1').replaceWith("<b>nội dung mới</b>");	//loại bỏ luôn thẻ có id là div1 và nội dung trong nó và thay thế bằng nội dung mới.	
+			// }
+			// //cài đặt sự kiện 3 - giống sự kiện 1
+			// document.getElementById('btb3').onclick=function(){
+			// 	$("<div style='background-color:green'>abc</div>").insertAfter('#div1');
+			// }
+			// //cài đặt sự kiện 4 - giống sự kiện 2
+			// document.getElementById('btb4').onclick=function(){
+			// 	$("<div style='background-color:yellow'>123</div>").insertBefore('#div1');
+			// }
+			//phần 5
+			//cài đặt sự kiện 1
+			document.getElementById('btb1').onclick=function(){
+				$('.sp').wrap("<div id='d1'><div id='d2'></div></div>"); 
+			}
+			///cài đặt sự kiện 2
+			document.getElementById('btb2').onclick=function(){
+				$('.sp').wrapAll("<div id='d1'></div>"); 
+			}
+			//cài đặt sự kiện 3 - giống sự kiện 1
+			document.getElementById('btb3').onclick=function(){
+				$('.sp').wrapInner("<div id='d3'></div>"); 
+			}
+			//cài đặt sự kiện 4 - giống sự kiện 2
+			document.getElementById('btb4').onclick=function(){
+				$("<div style='background-color:yellow'>123</div>").insertBefore('#div1');
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<b> đây là nội dung b</b><br />
+		<span id="span1">đây là nội dung span</span>
+	</div>
+	<!-- <div id="btb1" class="btb"> đọc html</div>
+	<div id="btb2" class="btb">gán html</div>
+	<div id="btb3" class="btb">đọc text</div>
+	<div id="btb4" class="btb">gán text</div> -->
+	<!-- phần 2 -->
+	<span  class="sp"> span1</span>
+	<span class="sp">span2
+		 <b> đậm</b>
+	</span>
+	<p>abc</p>
+	<span class="sp">span3</span>
+
+	<div id="btb1" class="btb"> b1</div>
+	<div id="btb2" class="btb">b2</div>
+	<div id="btb3" class="btb">b3</div>
+	<div id="btb4" class="btb">b4</div>
+</body>
+</html>

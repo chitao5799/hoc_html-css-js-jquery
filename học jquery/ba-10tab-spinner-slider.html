@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab...</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<script>
+		$(document).ready(function(){	
+			//tab
+			$('#mytab').tabs({
+				collapsible:true//event để mặc định thì thuộc tính này mới hoạt động.
+			});
+			//spinner
+			$('#mySpinner').spinner({
+				min:0,
+				max:10,
+				step:0.5,
+				stop:function(){
+					var vl=$('#mySpinner').spinner("value");
+					$('#spinnerValue').html(vl);
+				}
+
+			});
+			//slider
+			$('#myslider').slider({
+				min:0,
+				max:100,
+				step:1,
+				stop:function(){
+					var vl=$('#myslider').slider("value");
+					$('#vl1').html(vl);
+				}
+			});
+
+			$('#myslider2').slider({
+				orientation:'vertical',
+				stop:function(){
+					var vl=$('#myslider2').slider("value");
+					$('#vl2').html(vl);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- tab -->
+	<div id="mytab" style="width: 500px">
+		<ul>
+			<li><a href="#tab1">giới thiệu</a></li>
+			<li><a href="#tab2">nội dung</a></li>
+			<li><a href="#tab3">liên hệ</a></li>
+		</ul>
+		<div id="tab1"> nội dung phần giời thiệu</div>
+		<div id="tab2"> nội dung phần nội dung</div>
+		<div id="tab3"> nội dung phần liên hệ</div>
+	</div>
+	<br/>
+	SPINNER: <input type="text" id="mySpinner" style="width: 250px"/>
+	<br/>
+	giá trị hiện tại: <label id="spinnerValue">0</label>
+	<br/>
+	<div id="myslider" style="width: 250px"></div> <p id="vl1"></p>
+	<br/><br/><br/><br/>
+	<div id="myslider2" ></div> <p id="vl2"></p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chuyển động</title>
+	<script type="text/javascript" src="E:\\Hoc_html_css_javascript\\jquery_3.4.1.js"></script>
+	<style>
+		#hinh{
+			width: 600px;
+			height:600px;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$('#hinh').click(function(){
+				ChangeIamge();
+			});
+		});
+		var status=1;
+		function ChangeIamge(){
+			$('#hinh').stop(true);
+			if(status==1){
+				status=2;
+				SizeDown();
+			}else{
+				status=1;
+				SizeUp();
+			}
+		}
+		function SizeDown(){
+			$('#hinh').animate({
+				width:'200px',
+				height:'200px',
+				opacity:0.4
+				},
+				3000,
+				'swing',
+				ChangeIamge //gọi hàm này sẽ khiến chuyển động mãi mãi.
+				);
+		}
+		function SizeUp(){
+			$('#hinh').animate({
+				width:'700px',
+				height:'700px',
+				opacity:1
+				},
+				3000,
+				'linear',
+				ChangeIamge);
+		}
+	</script>
+</head>
+<body>
+	<img id="hinh"	src="E:\\DownLoad\\Sierra for Windows 10\\Themes\\Themes For 10 Build 10240\\Sierra\Wallpapers\\Sierra 1.jpg" alt="hình"/>
+</body>
+</html>

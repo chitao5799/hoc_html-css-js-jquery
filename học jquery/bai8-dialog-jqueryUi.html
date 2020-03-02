@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dialog</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<script>
+		$(document).ready(function(){
+			$('#my-dialog').dialog({
+				autoOpen:false,
+				title:'lựa chọn',
+				show: {effect:'blind',duration:1000},
+				hide:{ effect:'explode',duration:1000},
+				resizable:false,
+				modal:true,
+				buttons:{
+					"đồng ý":function(){
+						$('#msg').html("bạn đã đồng ý.bấm tắt để đóng.");
+					},
+					"tắt":function(){
+						$(this).dialog("close");
+					}
+				}
+			});
+		});
+		function OpenDialog(){
+			$('#my-dialog').dialog("open");
+		}
+	</script>
+</head>
+<body>
+	<a href="javascript:OpenDialog()">bấm để mở dialog</a>
+	<div id="my-dialog" style="display: none">
+		đây là nội dung thông báo.
+		<span id="msg"></span>
+	</div>
+</body>
+</html>

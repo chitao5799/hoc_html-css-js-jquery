@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script type="text/javascript" src="E:\\Hoc_html_css_javascript\\jquery_3.4.1.js"></script>
+
+	<script>
+		function LoadImage(){
+			//link dưới chứa 1 object.
+			$.ajax("https://jsonplaceholder.typicode.com/todos/1").fail(function (respone) {
+				$('#msg').html(respone);
+			}).done(function (respone) {
+				for(let i in respone)
+					$('#msg').append("<br/> key:   ").append(i).append(", value:  ").append(respone[i]);
+					//console.log(i);
+			});
+		}
+		
+	</script>
+</head>
+<body>
+	<a href="javascript:LoadImage()">[load ]</a>
+	<br/>
+	<p id="msg">giá trị thu được:</p>
+</body>
+</html>

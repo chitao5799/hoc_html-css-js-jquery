@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>resizable sortable selectable</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<script>
+		$(document).ready(function(){	
+			$('#resizable1').resizable({
+
+			});
+			$("#resizable2").resizable({
+				//đồng bộ khi cái này thay đổi kích thước thì cái kia tự động thay đổi luôn theo
+				//alsoResize:"#resizable1",
+				//aspectRatio:4/3
+				animate:true,
+				ghost:true
+			});
+			//sortable
+			$('#mysortable').sortable({
+				connectWith:'#mysortable2'
+			});
+			$('#mysortable2').sortable({
+				connectWith:'#mysortable',
+				activate:function(){
+					$('#mysortable2 li').css("background-color","green");
+				},
+				deactivate:function(){
+					$('#mysortable2 li').css("background-color","");
+				}
+			});
+			$('#list1').selectable({
+				filter:'.A',
+				selected:function(){
+					var data='';
+					$('#list1 .ui-selected').each(function(){
+						 data+='   '+$(this).attr("mydata");
+					});
+					alert(data);
+				}
+			});
+		});
+	</script>
+</head>
+<body style="padding: 50px">
+	<div id="resizable1" style="border: 1px solid #ccc;width: 250px;height: 100px">A
+	</div>
+	<div id="resizable2" style="border: 1px solid #ccc;width: 250px;height: 100px;margin-top: 20px;background-color: red;">B
+	</div>
+	<br/><br/><br/><br/>
+	<style>
+		.myconnect{
+			margin:100px 0px 0px 50px;
+			float: left;
+		}
+		li{
+			margin: 10px 0px 0px 0px;
+			padding: 10px;
+			width: 100px;
+			border: 1px solid #ccc;
+			display: block;
+			text-align: center;
+		}
+		.ui-selecting{background-color: gray;}
+		.ui-selected{background-color: black;}
+	</style>
+	<ul id="mysortable" class="myconnect">
+		<li>a-1</li>
+		<li>a-2</li>
+		<li>a-3</li>
+	</ul>
+	<ul id="mysortable2" class="myconnect">
+		<li>b-1</li>
+		<li>b-2</li>
+		<li>b-3</li>
+	</ul>
+	<!-- selectbale -->
+	<ul id="list1" class="myconnect">
+		<li mydata="1" class="B">a1</li>
+		<li mydata="2" class="A">a2</li>
+		<li mydata="3" class="A">a3</li>
+	</ul>
+</body>
+</html>

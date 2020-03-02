@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>selectmenu radio</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<script>
+		$(document).ready(function(){	
+			//selectmenu buowcs1:định nghĩa lại hàm render selectmenu
+			$.widget("custom.selectmenuWithavatar" ,$.ui.selectmenu,
+				{
+					//toàn bộ sẽ được đặt trong thẻ ul
+					_renderItem:function(ulVarible,itemVarible){
+					//function có hai đối số lần lượt là ul và item; ulVarible,itemVarible-tự đặt tên khác
+					//phần tử ul sẽ thêm phần tử li mới tạo vào
+						//mỗi item là 1 thẻ <li>
+						var li=$("<li>");
+						//thêm class đánh dấu disable vào thẻ <li> (nếu có)
+						if(itemVarible.disabled){
+							li.addClass("ui-state-disabled");
+						}
+						//mỗi thẻ <li> chứa thẻ <div> làm nội dung
+						//label của <option>
+						var wrapper=$("<div>",{text:itemVarible.label});
+						//trong thẻ <div> sẽ có text và 1 thẻ <span> làm avartar
+						//element là thẻ <option> ban đầu
+						$("<span>",{
+							style:itemVarible.element.attr("dataStyle"),
+							"class":itemVarible.element.attr("dataClass") +" ui-icon"				
+						}).appendTo(wrapper);
+						//trả về 2 item sau khi render
+						return li.append(wrapper).appendTo(ulVarible);
+					}
+				}
+			);
+			//selectmenu bước 2:sử dụng
+			$("#myselect").selectmenuWithavatar();
+			//checkboxradio
+			$('input.myCheckBoxRadioClass').checkboxradio({
+					// icon:false
+				});
+		});
+	</script>
+</head>
+<body>
+	<style>
+		.ui-menu-item-wrapper{ /*tên mặc định*/
+			height: 50px; /*17px -hoặc ko định dạng cho hình ảnh nhỏ*/
+			padding-left: 70px !important;
+		}
+		.avartarClass.ui-icon{ /*2 tên class này là tự định nghĩa*/
+			width: 50px; /*17px -hoặc ko định dạng cho hình ảnh nhỏ*/
+			height: 50px; /*17px -hoặc ko định dạng cho hình ảnh nhỏ*/
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	</style>
+	<select name="" id="myselect" style="width: 300px">
+		<!-- nếu ko định dạng css thì hình ảnh phải nhỏ hoặc hình to thì định dạng lại css như thẻ style trên,
+		 dataClass, dataStyle là thuộc tính tự thêm vào -->
+		<option value="1" dataClass="avartarClass" dataStyle="background-image:url('../anh/wreath.png')">Nguyễn văn A</option>
+		<option value="2" dataClass="avartarClass" dataStyle="background-image:url('../anh/fireworks.png')">Nguyễn Văn B</option>
+		<option value="3" dataClass="avartarClass" dataStyle="background-image:url('../anh/snowflake.png')">hoàng văn c</option>
+	</select>
+	<br/><br/>
+	<fieldset>
+		<legend>ví dụ về radio</legend>
+		<label >
+			<input type="radio" name="city" class="myCheckBoxRadioClass"/> hồ chí minh
+		</label>
+		<label >
+			<input type="radio" name="city" class="myCheckBoxRadioClass"/> hà nội
+		</label>
+		<label >
+			<input type="radio" name="city" class="myCheckBoxRadioClass"/> đà nẵng
+		</label>
+	</fieldset>
+	<fieldset>
+		<legend>ví dụ về checkbox</legend>
+		<label >
+			<input type="checkbox" class="myCheckBoxRadioClass"/>đọc sách
+		</label>
+		<label >
+			<input type="checkbox"  class="myCheckBoxRadioClass"/>xem phim
+		</label>
+		<label >
+			<input type="checkbox"  class="myCheckBoxRadioClass"/>bóng đá
+		</label>
+	</fieldset>
+</body>
+</html>

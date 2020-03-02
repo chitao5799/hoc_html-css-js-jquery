@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>progressbar,datepicker,tooltip</title>
+	<script type="text/javascript" src="..\\jquery_3.4.1.js"></script>
+	<script type="text/javascript" src="..\\jquery-ui-1.12.1.custom\\jquery-ui.js"></script>
+	<link rel="stylesheet" href="..\\jquery-ui-1.12.1.custom\\jquery-ui.css">
+	<style>
+		#my-prb{
+			position: relative;
+			border: 1px solid green;
+			width: 300px;
+		}
+		#my-prb-label{
+			position: absolute;
+			margin-top: 7px;
+			width: 100%;
+			text-align: center;
+		}
+
+	</style>
+	<script>
+		$(document).ready(function(){
+			//progressbar
+			$('#my-prb').progressbar({
+				value:false,
+				change: function(){
+					var c_value=$('#my-prb').progressbar("value");
+					$('#my-prb-label').html(c_value+'%');
+				},
+				complete:function(){
+					$('#my-prb-label').html('đã xong');
+				}
+			});
+			//datepicker
+			$("#birthday").datepicker({
+				dateFormat:'dd/mm/yy',
+				minDate:"-100",
+				maxDate:"20/12/2019"
+			});
+			//tooltip
+			$('#my-tooltip').tooltip({
+				show:{effect:"slideDown",delay:250},
+				hide:{effect:"slideUp",delay:300},
+				track:true
+			});
+		});
+		function StartProgressbar(){
+			/*$('#my-prb').progressbar("value")+1; nếu thực tế
+			 thì có hàm lấy % của quá trình gì đó đang xử lý*/
+			var c_value=$('#my-prb').progressbar("value")+1;
+			$('#my-prb').progressbar("value",c_value);
+			if(c_value<100){
+				setTimeout("StartProgressbar()",100);
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<a id="my-tooltip" href="javascript:StartProgressbar()" title="click to run progressbar">click to open proressbar</a>
+	<br/>
+	<div id="my-prb">
+		<p id="my-prb-label">
+			đang bắt đầu....
+		</p>
+	</div>
+	<hr/>
+	<p>sinh nhật của bạn</p>
+	<input type="text" id="birthday" style="width: 150px"/>
+</body>
+</html>
