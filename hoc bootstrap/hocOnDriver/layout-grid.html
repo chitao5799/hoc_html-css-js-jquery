@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <style>
+    	.container{
+    		border: 1px solid black;
+    	}
+    	.row div {
+    		margin-bottom: 10px;
+    	}
+    	.row div *{
+    		background-color: blue;
+    		color: white;
+
+    	}
+    </style>
+</head>
+<body>
+	<h1>sử dụng class col-md trong bootstrap</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<header>phần header 12 cột</header>
+			</div>
+			<div class="col-md-3">
+				<section>cột trái 3 cột</section>
+			</div>
+			<div class="col-md-6">
+				<article>
+					cột chứa nội dung 6 cột
+				</article>
+			</div>
+			<div class="col-md-3">
+				<aside>cột phải 3 cột</aside>
+			</div>
+			<div class="col-md-6">
+				<footer>phần copyright</footer>
+			</div>
+			<div class="col-md-6">
+				<footer>desing by me</footer>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<header>phần header 12 cột</header>
+			</div>
+			<div class="col-md-3">
+				<section>cột trái 3 cột</section>
+			</div>
+			<div class="col-md-6">
+				<article>
+					cột chứa nội dung 6 cột
+					<div class="row show-grid">
+						<div class="col-md-6">nội dung trái</div>
+						<div class="col-md-6">nội dung phải</div>
+					</div>
+
+				</article>
+			</div>
+			<div class="col-md-3">
+				<aside>cột phải 3 cột</aside>
+			</div>
+			<div class="col-md-3 push-md-2">
+				<footer>phần copyright</footer>
+			</div>
+			<div class="col-md-3 offset-md-2">
+				<footer>desing by me 
+					<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+				</footer>
+			</div>
+		</div>
+		
+	</div>
+	<div class="container">
+  <div class="row">
+    <div class="col align-self-start">
+      One of three columns
+    </div>
+    <div class="col align-self-center">
+      One of three columns
+    </div>
+    <div class="col align-self-end">
+      One of three columns
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      First, but unordered
+    </div>
+    <div class="col order-12">
+      Second, but last
+    </div>
+    <div class="col order-1">
+      Third, but first
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+</div>
+<div class="row">
+  <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+  <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+</div>
+<div class="row">
+  <div class="col-auto mr-auto">.col-auto .mr-auto</div>
+  <div class="col-auto">.col-auto</div>
+</div>
+	<script type="text/javascript" src="../bootstrap-4.4.1-dist/jquery_3.4.1.js"></script>
+    <script type="text/javascript" src="../bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+	</title>
+	<script type="text/javascript">
+		// var anhArr=[];
+		var dem=1;
+		var chay;
+		// function loadAnh() {
+		// 	for (var i =1;i<7;i++) {
+		// 		anhArr[i]=new Image();
+		// 		anhArr[i].src="./img/a"+i+".jpg"
+		// 	}
+		// }
+		function next(){
+			if (dem==6) {dem=0;}
+			dem++;
+			document.duc.src="./img/a"+dem+".jpg";
+			if(dem==6){
+				document.getElementById("hid").style.visibility="hidden";
+			}
+			document.getElementById("hid2").style.visibility="visible";
+		}
+		function back(){
+			if (dem==1) {dem=7;}
+			dem--;
+			document.duc.src="./img/a"+dem+".jpg";
+			if(dem==1){
+				document.getElementById("hid2").style.visibility="hidden";
+
+			}
+			document.getElementById("hid").style.visibility="visible";
+
+		}
+		function first(){
+			if (dem<=6) {dem=1;}
+			
+			document.duc.src="./img/a"+dem+".jpg";
+		}
+		function last(){
+			if (dem>=0) {dem=6;}
+			
+			document.duc.src="./img/a"+dem+".jpg";
+		}
+		function play(){
+			chay=setInterval(function(){next();},1000);
+		}
+		function stop(){
+			clearInterval(chay);
+		}
+	</script>
+</head>
+<body>
+	<img name="duc" src="./img/a1.jpg" width="450px" height="auto" alt=""><br />
+	<input type="button" value="first" onclick="first();">
+	<input type="button" value="back" id="hid2" onclick="back();">
+	<input type="button" value="next" id="hid" onclick="next();">
+	<input type="button" value="last" onclick="last();"><br/>
+	<input type="button" value="play" onclick="play();">
+	<input type="button" value="stop" onclick="stop();">
+</body>
+</html>
