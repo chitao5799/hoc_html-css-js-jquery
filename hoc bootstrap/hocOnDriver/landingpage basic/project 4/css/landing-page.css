@@ -1,0 +1,86 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.foot {
+    padding-bottom: 40px;
+}
+
+.menutrai li {
+    list-style: none;
+    float: left;
+    margin-right: 22px;
+    font-size: 14px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.button-nenanh2 {
+    margin-top: 26px;
+}
+
+
+
+hr.ngan {
+    width: 47%;
+    background-color: #e7e7e7;
+    border: 1px solid #e7e7e7;
+}
+
+.nenxam1 h2 {
+    font-weight: 700;
+    padding: 20px 0px;
+}
+
+.nenxam1 {
+    padding: 48px 0px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.nen-anh h1 {
+    font-size: 60px;
+    font-weight: 900;
+    text-shadow: 2px 1px 0px #000000b8;
+}
+.nentrang1 {
+    background-color: white;
+}
+nav.navbar.navbar-default {
+    margin-bottom: 0px;
+}
+
+.nen-anh {
+    padding-top: 230px;
+    padding-bottom: 280px;
+    background-image: url(../img/intro-bg.jpg);
+    color: white;
+}
+
+.nen-anh {}
+.nenanh2 {
+    padding: 90px 0px;
+    background-image: url(../img/banner-bg.jpg);
+    color: white;
+}
+
+.nenanh2 {}
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+b.nut {
+    margin-right: 5px;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
