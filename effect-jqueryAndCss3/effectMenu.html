@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hiệu ứng với menu</title>
+	<script src="./jquery_3.4.1.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding:0px;
+		}
+		body {
+		    width: 100%;
+		    height: 100%;
+		    top: 0px;
+		    left: 0px;
+		    position: absolute;
+		    background-color: #f7d0d0;
+		    transition: 1s;
+		}
+		h3.h3title {
+    width: calc(100% - 600px);
+    margin: auto;
+    margin-top: 20px;
+}
+		p.doanvan {
+    width: calc(100% - 700px);
+    margin: 20px auto;
+}
+.khoiChung {
+    width: 90%;
+    height: 1000px;
+    margin: 200px auto;
+}
+div#khoi1 {
+    background-color: #bbbbf7;
+    color: white;
+}
+div#khoi2 {
+    background-color: #ffff0042;
+    color: black;
+}
+div#khoi3 {
+    background-color: pink;
+}
+
+.khoimo {
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #e5e4e459;
+    position: fixed;
+    top: 0px;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+
+}
+.khoiMoHien{
+	opacity: 1;
+    visibility:visible;
+}
+.wraperNut{
+	    margin: auto; 
+	    margin-top: 50px;
+	    width: 30%;
+}
+.nutchung:hover {
+    background-color: #e5068c;
+}
+
+.nutchung {
+    text-align: center;
+
+    width: 100px;
+    background-color: #ff2475;
+    padding: 10px 0px;
+    border-radius: 5px;
+   
+    cursor: pointer;
+    transition: 0.5s;
+}
+.menuchung{
+	width: 300px;
+    height: 100%;
+    background-color: #8f8fed;
+    position: fixed;
+    z-index: 3;
+}
+.link {
+    display: block;
+    background-color: green;
+    padding: 10px 0px;
+    margin: 10px 0px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+.menutrai {
+     top: 0px;
+    left: -300px;
+  /*  transition: ease 0.5s; viết dòng này trước rồi lên chrome chỉnh,click vào biểu tượng ease rồi chỉnh sẽ được dòng dưới*/
+	transition: cubic-bezier(0, 0.91, 0.05, 1.61) 0.5s;
+}
+.hienmenutrai{
+ left: 0px;
+}
+/*------------*/
+.menuphai {
+    top: 0px;
+    right: -300px;
+    transition: 1s;
+}
+.hienMenuPhai{
+	right: 0px;
+}
+.bodySangTrai{
+	left: -300px;
+	}
+/*------------*/
+.wrapMenu3d{
+	width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+	perspective: 300px;
+	visibility: hidden;
+	}
+	.bodySangPhai{
+		right: -300px;
+		left: unset;
+	}
+.menutrai3d{
+	transform-origin: 100% 100%;
+	visibility: hidden;
+	transform: rotateY(-85deg);
+}
+.hienmenutrai3d{
+	animation: mora 1s forwards;
+	/*animation-delay: 1s;/*đợi 1s cho body sang phải đã*/
+}
+@-webkit-keyframes mora{
+	0%{
+		transform: rotateY(-85deg);
+		visibility: hidden;
+	}
+	100%{
+		transform: rotateY(0deg);visibility: visible;
+	}
+}
+</style>
+
+</head>
+<body>	
+	<!--các mẫu- search Sidebar Transitions : https://tympanus.net/Development/SidebarTransitions/ -->
+		<h3 class="h3title">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h3>
+		<p class="doanvan">Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+		<div class="wraperNut">
+			<div class="nutchung nutMoMenuTraira">
+			hiện menu
+			</div>
+			<div class="nutchung nutMenuPhai">
+			hiện menu phải
+			</div>
+			<div class="nutchung nutMenuTrai3d">
+			hiện menu trái 3d
+			</div>
+		</div>
+		<div class="khoimo">
+			
+		</div>
+		<div class="menuchung menutrai">
+			menu bên trái
+			<span id="link1" class="link ">khối 1</span>
+			<span  id="link2" class="link">khối 1</span>
+			<span id="link3" class="link">khối 1</span>
+		</div>
+		<div class="menuchung menuphai">
+			menu bên phai
+		</div>
+		<div class="wrapMenu3d">
+			<div class="menuchung menutrai3d">
+				menu bên trái 3d
+			</div>
+		</div>
+	<div class="khoiChung" id="khoi1">
+		What is Lorem Ipsum?
+	What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	</div>
+	<div class="khoiChung" id="khoi2">
+		Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+	</div>
+	<div class="khoiChung" id="khoi3">
+	The standard Lorem Ipsum passage, used since the 1500s
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+	</div>
+	<script>
+		$(function(){
+			$('.nutchung').click(function(){
+				$('.khoimo').addClass('khoiMoHien');
+			});
+			$('#link1').click(function(){
+				var targetKhoi1=$('#khoi1').offset().top-100;
+				$('html,body').animate({scrollTop: targetKhoi1}, 1000);
+			});
+			$('#link2').click(function(){
+				var targetKhoi2=$('#khoi2').offset().top-100;
+				$('html,body').animate({scrollTop: targetKhoi2}, 1000);
+			});
+			$('#link3').click(function(){
+				var targetKhoi3=$('#khoi3').offset().top-100;
+				$('html,body').animate({scrollTop: targetKhoi3}, 1000);
+			});
+			// ----
+			$('.nutMoMenuTraira').click(function(){
+				// $('.menutrai').toggleClass('hienmenutrai');
+				$('.menutrai').addClass('hienmenutrai');
+			});
+			$('.khoimo').click(function(){
+				$('.khoimo').removeClass('khoiMoHien');
+				$('.menutrai').removeClass('hienmenutrai');
+			});
+			// -----
+			$('.nutMenuPhai').click(function(){
+				$('.menuphai').addClass('hienMenuPhai');
+				$('body').addClass('bodySangTrai');
+			});
+			$('.khoimo').click(function(){
+				$('.khoimo').removeClass('khoiMoHien');
+				$('.menuphai').removeClass('hienMenuPhai');
+				$('body').removeClass('bodySangTrai');
+			});
+			// ----
+			$('.nutMenuTrai3d').click(function(){
+				$('.menutrai3d').addClass('hienmenutrai3d');
+				$('body').addClass('bodySangPhai');
+			});
+			$('.khoimo').click(function(){
+				$('.khoimo').removeClass('khoiMoHien');
+				$('.menutrai3d').removeClass('hienmenutrai3d');
+				$('body').removeClass('bodySangPhai');
+			});
+		})
+	</script>
+</body>
+</html>

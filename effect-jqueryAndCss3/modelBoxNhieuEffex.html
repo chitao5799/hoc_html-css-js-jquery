@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./jquery_3.4.1.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+
+.noidungChung .nutdong:hover {
+    background-color: #d20101;
+}
+
+.noidungChung .nutdong {
+    border-radius: 5px;
+    width: 76px;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #5d2e2e;
+    cursor: pointer;
+    margin: auto;
+}
+
+.noidungChung .text {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0px 35px;
+}
+
+.noidungChung h3 {
+    background-color: #ca0000;
+    color: wheat;
+    text-align: center;
+    padding: 15px 0px;
+}
+.noidungChung{
+   position: fixed;
+    width: 350px;
+    height: 250px;
+    top: 50%; left: 50%;/*góc trên cùng bên trái của box sẽ ở giữa màn hình nên chỉnh lại margin như ở dưới*/
+	margin-top: -125px;/*để = âm một nửa chiều cao để hiện theo chiều dọc ở giữa màn hình*/
+	margin-left: -175px;/*để = âm một nửa chiều rộng để hiện theo chiều ngang ở giữa màn hình*/
+
+    background-color: #a90909;
+    color: #d0b8b8;
+    z-index: 5;
+    border-radius: 5px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+/*==============*/
+
+.noidung {
+    
+ 
+    transform: scale(0.2);
+}
+.noidungChung.noidunghienra {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+/*------*/
+.noidung_traiSang{
+	transform: translateX(300px);
+}
+.noidungChung.noidunghienra_traiSang{
+	opacity: 1;
+    visibility: visible;
+	transform: translateX(0px);
+}
+/*------*/
+.noidung_DuoiLen{
+	transform: translateY(300px);
+}
+.noidungChung.noidunghienra_DuoiLen{
+	opacity: 1;
+    visibility: visible;
+	transform: translateY(0px);
+}
+/*------*/
+.noidung_TrenXuong{
+	transform: translateY(-200px);
+}
+.noidungChung.noidunghienra_Trenxuong{
+	opacity: 1;
+    visibility: visible;
+	transform: translateY(0px);
+}
+/*------*/
+.noidung_XoayVaZoom{
+	transform:rotate(360deg) scale(0.3);
+}
+.noidungChung.noidunghienra_XoayZoom{
+	opacity: 1;visibility: visible;
+    transform:rotate(0deg) scale(1);
+
+}
+/*------*/
+.noidung_ZoomNho{
+	transform:scale(3);
+}
+.noidungChung.noidunghienra_ZoomNho{
+	opacity: 1;visibility: visible;
+    transform:scale(1);
+
+}
+/*------*/
+.noidung_ZoomNho_Quay
+{
+	transform-origin: 0% 100%; /*tâm ở góc dưới trái - góc trên trái là điểm (0,0) góc tọa độ ; 0% là x , 100% là y*/
+	transform:rotate(35deg) scale(2);
+}
+.noidungChung.noidunghienra_ZoomNhoQuay{
+	opacity: 1;visibility: visible;
+    transform:rotate(0deg) scale(1);
+
+}
+/*---===---*/
+.bo_noiDuong_3d{
+	 position: fixed;
+    width: 350px;
+    height: 250px;
+    top: 50%; left: 50%;
+	margin-top: -125px;
+	margin-left: -175px;
+	z-index: 3;
+	perspective: 900px; /*để có 3d, số càng lớn thì nhìn càng to - càng gần mắt người ngồi trước màn hình*/
+}
+/*---===---*/
+.noidung_Quay3D
+{
+	transform-origin: 50% 50%; 
+	transform:rotateY(90deg);
+}
+.noidungChung.noidunghienra_Quay3d{
+	opacity: 1;visibility: visible;
+    transform:rotateY(0deg);
+
+}
+/*--------*/
+.noidung_mo3D
+{
+	transform-origin:50% 0%; 
+	transform:rotateX(-90deg);
+}
+.noidungChung.noidunghienra_mo3d{
+	opacity: 1;visibility: visible;
+    transform:rotateX(0deg);
+
+}
+/*--------*/
+.noidung_tienDenXoay
+{
+	transform:  translateZ(-2000px) rotateY(80deg);
+}
+.noidungChung.noidunghienra_tienDenXoay{
+	opacity: 1;visibility: visible;
+    transform:rotateX(0deg);
+	animation: tienvao 1s forwards;
+}
+@-webkit-keyframes tienvao{
+	0%{
+		transform:  translateZ(-2000px) rotateY(85deg);
+	}
+	80%{
+		transform:  translateZ(0px) rotateY(85deg);
+	}
+	100%{
+		transform:  translateZ(0px) rotateY(0deg);
+	}
+}
+/*========*/
+.nutChung:hover {
+    background-color: #ca0a0a;
+}
+
+.nutChung {background-color: #d82a2a;
+	color: wheat;text-align: center;
+	width: 100px;/* height: 30px; */
+	padding: 10px 0px;cursor: pointer;
+	border-radius: 5px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;}
+
+.trai {
+    width: 50%;
+    margin-right: 40px;
+    font-size: 30px;
+}
+
+.phan2cot {
+    width: 70%;
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px 0px;
+}
+.overlay_momo {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #00000059;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+}
+.momohien{
+	visibility: visible;
+    opacity: 1;
+}
+.tieude {
+    background-color: #f51b1b;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+body {
+    background-color: #de4f4f;
+}
+	</style>
+</head>
+<body>
+	<!--Mẫu-search nifty modal window effects : https://tympanus.net/Development/ModalWindowEffects/  -->
+	<div class="tieude">
+		<h2 class="chuto">demo phương pháp jquery kết hợp css3</h2>
+		<small class="chunho">phương pháp này cực kỳ mạnh</small>
+	</div>
+
+	<div class="phan2cot">
+		<div class="trai">
+			hiệu ứng này rất hay dùng khi login/sigup không cần phải mở trang mới.hoặc hiển thị quảng cáo, hoặc làm gì đó.
+		</div>
+		<div class="phai">
+			<div class="nutChung nut">phóng to</div>
+			<div class="nutChung nut_TraiSang">Trái sang</div>
+			<div class="nutChung nut_DuoiLen">Dưới lên</div>
+			<div class="nutChung nut_Trenxuong">Trên Xuống</div>
+			<div class="nutChung nut_Xoay_phongTo">Xoay 360 và phóng to</div>
+			<div class="nutChung nut_zoomNho">zoom nhỏ - fall</div>
+			<div class="nutChung nut_zoomNhoQuay">zoom nhỏ - quay</div>
+			<div class="nutChung nut_Quay3D">quay 3d</div>
+			<div class="nutChung nut_mo3D">mo 3d</div>
+			<div class="nutChung nut_tienDenXoay">tiến đến - xoay</div>
+		</div>
+	</div>
+	<div class="overlay_momo"></div>
+
+	<!-- ------------------  -->
+	<div class="noidungChung noidung">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+		<!-- ------------------  -->
+	<div class="noidungChung noidung_traiSang">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+		<!-- ------------------  -->
+	<div class="noidungChung noidung_DuoiLen">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+		<!-- ------------------  -->
+	<div class="noidungChung noidung_TrenXuong">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+	<!-- ------------------  -->
+	<div class="noidungChung noidung_XoayVaZoom">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+	<!-- ------------------  -->
+	<div class="noidungChung noidung_ZoomNho">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+	<!-- ------------------  -->
+	<div class="noidungChung noidung_ZoomNho_Quay">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+	<!-- ------------------  -->
+	<div class="bo_noiDuong_3d">
+		<div class="noidungChung noidung_Quay3D">
+			<h3>Đăng nhập tại đây</h3>
+			<div class="text">
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			</div>
+			<div class="nutdong">Clost</div>
+		</div>
+	</div>
+	<!-- ------------------  -->
+	<div class="bo_noiDuong_3d">
+		<div class="noidungChung noidung_mo3D">
+			<h3>Đăng nhập tại đây</h3>
+			<div class="text">
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			</div>
+			<div class="nutdong">Clost</div>
+		</div>
+	</div>
+	<!-- ------------------  -->
+	<div class="bo_noiDuong_3d">
+		<div class="noidungChung noidung_tienDenXoay">
+			<h3>Đăng nhập tại đây</h3>
+			<div class="text">
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+				alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			</div>
+			<div class="nutdong">Clost</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			//khi load xong page là hiện ra luôn
+			$('.noidung').addClass("noidunghienra");
+			$('.overlay_momo').addClass("momohien");
+			setTimeout(function(){ 
+				$('.noidung').removeClass("noidunghienra");
+				$('.overlay_momo').removeClass("momohien");
+			}, 3000);
+			//====== phóng to
+			$('.nut').click(function(){
+				$('.noidung').addClass("noidunghienra");
+				$('.overlay_momo').addClass("momohien");
+			});
+			//khi click nút close hoặc click  vào mờ mờ thì cũng đóng - ý là click ra ngoài khối box
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung').removeClass("noidunghienra");
+				$('.overlay_momo').removeClass("momohien");
+			});
+			
+			// ========trái sang
+			$('.nut_TraiSang').click(function(){
+				$('.noidung_traiSang').addClass("noidunghienra_traiSang");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_traiSang').removeClass("noidunghienra_traiSang");
+				$('.overlay_momo').removeClass("momohien");
+			});
+			// ========trên xuống
+			$('.nut_Trenxuong').click(function(){
+				$('.noidung_TrenXuong').addClass("noidunghienra_Trenxuong");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_TrenXuong').removeClass("noidunghienra_Trenxuong");
+				$('.overlay_momo').removeClass("momohien");
+			});
+				// ========duối lên
+			$('.nut_DuoiLen').click(function(){
+				$('.noidung_DuoiLen').addClass("noidunghienra_DuoiLen");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_DuoiLen').removeClass("noidunghienra_DuoiLen");
+				$('.overlay_momo').removeClass("momohien");
+			});
+				// ========xoay zoom
+			$('.nut_Xoay_phongTo').click(function(){
+				$('.noidung_XoayVaZoom').addClass("noidunghienra_XoayZoom");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_XoayVaZoom').removeClass("noidunghienra_XoayZoom");
+				$('.overlay_momo').removeClass("momohien");
+			});
+				// ========zoom nhỏ
+			$('.nut_zoomNho').click(function(){
+				$('.noidung_ZoomNho').addClass("noidunghienra_ZoomNho");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_ZoomNho').removeClass("noidunghienra_ZoomNho");
+				$('.overlay_momo').removeClass("momohien");
+			});
+				// ========zoom nhỏ và quay theo tâm ở góc dưới trái của box
+			$('.nut_zoomNhoQuay').click(function(){
+				$('.noidung_ZoomNho_Quay').addClass("noidunghienra_ZoomNhoQuay");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_ZoomNho_Quay').removeClass("noidunghienra_ZoomNhoQuay");
+				$('.overlay_momo').removeClass("momohien");
+			});
+				// ========quay 3d
+			$('.nut_Quay3D').click(function(){
+				$('.noidung_Quay3D').addClass("noidunghienra_Quay3d");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_Quay3D').removeClass("noidunghienra_Quay3d");
+				$('.overlay_momo').removeClass("momohien");
+			});
+			// ========mở 3d
+			$('.nut_mo3D').click(function(){
+				$('.noidung_mo3D').addClass("noidunghienra_mo3d");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_mo3D').removeClass("noidunghienra_mo3d");
+				$('.overlay_momo').removeClass("momohien");
+			});
+			// ========tiến đến gần mình và mở ra
+			$('.nut_tienDenXoay').click(function(){
+				$('.noidung_tienDenXoay').addClass("noidunghienra_tienDenXoay");
+				$('.overlay_momo').addClass("momohien");
+			});
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung_tienDenXoay').removeClass("noidunghienra_tienDenXoay");
+				$('.overlay_momo').removeClass("momohien");
+			});
+		})
+	</script>
+</body>
+</html>

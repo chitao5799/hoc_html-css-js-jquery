@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./jquery_3.4.1.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+
+.noidung .nutdong:hover {
+    background-color: #d20101;
+}
+
+.noidung .nutdong {
+    border-radius: 5px;
+    width: 76px;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #5d2e2e;
+    cursor: pointer;
+    margin: auto;
+}
+
+.noidung .text {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0px 35px;
+}
+
+.noidung h3 {
+    background-color: #ca0000;
+    color: wheat;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.noidung {
+    
+    position: fixed;
+    width: 350px;
+    height: 250px;
+    top: 50%; left: 50%;/*góc trên cùng bên trái của box sẽ ở giữa màn hình nên chỉnh lại margin như ở dưới*/
+	margin-top: -125px;/*để = âm một nửa chiều cao để hiện theo chiều dọc ở giữa màn hình*/
+	margin-left: -175px;/*để = âm một nửa chiều rộng để hiện theo chiều ngang ở giữa màn hình*/
+
+    background-color: #a90909;
+    color: #d0b8b8;
+    z-index: 5;
+    border-radius: 5px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    transform: scale(0.2);
+}
+.noidung.noidunghienra {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.nut:hover {
+    background-color: #ca0a0a;
+}
+
+.nut {background-color: #d82a2a;color: wheat;text-align: center;width: 100px;/* height: 30px; */padding: 10px 0px;cursor: pointer;border-radius: 5px;}
+
+.trai {
+    width: 80%;
+    margin-right: 40px;
+    font-size: 30px;
+}
+
+.phan2cot {
+    width: 53%;
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px 0px;
+}
+.overlay_momo {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #00000059;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+}
+.momohien{
+	visibility: visible;
+    opacity: 1;
+}
+.tieude {
+    background-color: #f51b1b;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+body {
+    background-color: #de4f4f;
+}
+	</style>
+</head>
+<body>
+	<div class="tieude">
+		<h2 class="chuto">demo phương pháp jquery kết hợp css3</h2>
+		<small class="chunho">phương pháp này cực kỳ mạnh</small>
+	</div>
+
+	<div class="phan2cot">
+		<div class="trai">
+			hiệu ứng này rất hay dùng khi login/sigup không cần phải mở trang mới.hoặc hiển thị quảng cáo, hoặc làm gì đó.
+		</div>
+		<div class="phai">
+			<div class="nut">click me</div>
+		</div>
+	</div>
+	<div class="overlay_momo"></div>
+	<div class="noidung">
+		<h3>Đăng nhập tại đây</h3>
+		<div class="text">
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+			alkf leirw lad ewk alkdf woirew kafa lisdf kad 
+		</div>
+		<div class="nutdong">Clost</div>
+	</div>
+	<script>
+		$(function(){
+			$('.nut').click(function(){
+				$('.noidung').addClass("noidunghienra");
+				$('.overlay_momo').addClass("momohien");
+			});
+			//khi click nút close hoặc click  vào mờ mờ thì cũng đóng - ý là click ra ngoài khối box
+			$('.nutdong,.overlay_momo').click(function(){
+				$('.noidung').removeClass("noidunghienra");
+				$('.overlay_momo').removeClass("momohien");
+			});
+			
+			
+		})
+	</script>
+</body>
+</html>

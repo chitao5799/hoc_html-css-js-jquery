@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>làm slide</title>
+	<script src="./jquery_3.4.1.js"></script>
+	<style>
+		*{
+			margin: 0px;
+			padding:0px;
+		}
+
+.nutSilde ul {
+    display: inline-block;
+}
+
+.nutSilde li:hover {
+    background-color: #0077f18a;
+}
+.dotActive{
+ background-color: #0077f18a;
+}
+.nutSilde li {
+    list-style: none;
+    float: left;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    /* background-color: gray; */
+    border: 1px solid #3479f7;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+.prev {
+    position: absolute;
+    z-index: 5;
+    left: 20px;
+    cursor: pointer;
+    top: calc(50% - 25px);
+}
+
+.next {
+    position: absolute;
+    z-index: 5;
+    top: calc(50% - 25px);
+    right: 20px;
+    cursor: pointer;
+}
+
+.nutSilde {
+    /* position: relative; */
+    width: 100%;
+    height: 20px;
+    text-align: center;
+}
+
+._1slide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+ 	visibility: hidden;
+ 	    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    /* margin: auto; */
+    /* text-align: center; */
+    /* align-items: center; */
+    /* align-self: center; */
+    /* align-content: center; */
+}
+.active{
+	opacity: 1;
+	visibility: visible;
+}
+.anhSlide {
+    width: 100%;
+    height: 400px;
+    /* margin: auto; */
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.wrapSlide {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+.bien_mat_sang_trai{
+	animation: hided-trai 1s forwards;
+}
+@-webkit-keyframes hided-trai{
+	0%{
+		transform: translateX(0%);
+		opacity: 1;
+		visibility: visible;
+	}
+	100%{
+		transform: translateX(-100%);
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+.di_vao_tu_ben_phai{
+	animation: vao-phai 1s forwards;
+}
+@-webkit-keyframes vao-phai{
+	0%{
+		transform: translateX(100%);
+		opacity: 0;
+		visibility: hidden;
+	}
+	100%{
+		transform: translateX(0%);
+		opacity: 1;
+		visibility: visible;
+	}
+}
+.bien_mat_sang_phai{
+	animation: hided-phai 1s forwards;
+}
+@-webkit-keyframes hided-phai{
+	0%{
+		transform: translateX(0%);
+		opacity: 1;
+		visibility: visible;
+	}
+	100%{
+		transform: translateX(100%);
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+.di_vao_tu_ben_trai{
+	animation: vao-trai 1s forwards;
+}
+@-webkit-keyframes vao-trai{
+	0%{
+		transform: translateX(-100%);
+		opacity: 0;
+		visibility: hidden;
+	}
+	100%{
+		transform: translateX(0%);
+		opacity: 1;
+		visibility: visible;
+	}
+}
+</style>
+
+
+</head>
+<body>
+	<div class="wrapSlide">
+		<div class="anhSlide">
+			<div class="_1slide active"><img src="images/a1.jpg" style="width: 900px;height: 400px;" alt=""></div>
+			<div class="_1slide"><img src="images/a3.jpg" style="width: 900px;height: 400px;" alt=""></div>
+			<div class="_1slide"><img src="images/c1.jpg" style="width: 900px;height: 400px;" alt=""></div>
+			<div class="_1slide"><img src="images/v1.png" style="width: 900px;height: 400px;" alt=""></div>
+
+		</div>
+		<div class="nutSilde">
+			<div class="next"><img src="images/arrowRight.png" style="width: 50px;height: 50px;" alt=""></div>
+			<div class="prev"><img src="images/arrowLeft.png" style="width: 50px;height: 50px;" alt=""></div>
+			<ul>
+				<li class="dot dotActive" ></li>
+				<li class="dot" ></li>
+				<li class="dot"></li>
+				<li class="dot" ></li>
+			</ul>
+			
+		</div>
+
+
+	</div>
+
+	<script>
+		var slideHienTai=1;
+		var dots=$('.dot');
+		var slideFirst=$('._1slide').first();
+		var slideLastest=$('._1slide').last();
+		$(function(){
+			$('.next').click(function(envent){
+				var slideSau=$('.active').next();
+				
+				slideHienTai+=1;
+				if(slideHienTai===1){
+					$('.dotActive').removeClass('dotActive');
+					slideLastest.addClass('bien_mat_sang_trai').one('webkitAnimationEnd',function(envent){
+						$('.bien_mat_sang_trai').removeClass('bien_mat_sang_trai');
+						
+					});
+					slideFirst.addClass('di_vao_tu_ben_phai').one('webkitAnimationEnd',function(){
+						$('.active').removeClass('active');
+						$('.di_vao_tu_ben_phai').addClass('active').removeClass('di_vao_tu_ben_phai');
+						
+					});
+					dots[0].className += " dotActive";
+				}
+				else{
+					$('.dotActive').removeClass('dotActive');
+					$('.active').addClass('bien_mat_sang_trai').one('webkitAnimationEnd',function(envent){
+						$('.bien_mat_sang_trai').removeClass('bien_mat_sang_trai');	
+					});
+					slideSau.addClass('di_vao_tu_ben_phai').one('webkitAnimationEnd',function(){
+						//bỏ class active của slide vừa biến mắt sang trái
+						$('.active').removeClass('active');
+						//cho slide mới đi từ phải vào class active
+						$('.di_vao_tu_ben_phai').addClass('active').removeClass('di_vao_tu_ben_phai');
+						
+					});
+					dots[slideHienTai-1].className += " dotActive";
+
+				}
+				if(slideHienTai===4){
+					
+					// slideFirst.addClass('active');
+					// slideLastest.removeClass('active');
+					
+					slideHienTai=0;
+				}
+				
+			});
+			$('.prev').click(function(envent){
+				slideHienTai-=1;
+				if(slideHienTai===0){	
+					slideHienTai=4;
+				}
+				if(slideHienTai===4){
+					$('.dotActive').removeClass('dotActive');
+					slideLastest.addClass('di_vao_tu_ben_trai').one('webkitAnimationEnd',function(){
+						$('.active').removeClass('active');
+						$('.di_vao_tu_ben_trai').addClass('active').removeClass('di_vao_tu_ben_trai');
+						
+					});
+					slideFirst.addClass('bien_mat_sang_phai').one('webkitAnimationEnd',function(envent){
+						$('.bien_mat_sang_phai').removeClass('bien_mat_sang_phai');
+						
+					});
+					dots[3].className += " dotActive";
+				}
+				else{
+					var slideTruoc=$('.active').prev();
+					$('.dotActive').removeClass('dotActive');
+					$('.active').addClass('bien_mat_sang_phai').one('webkitAnimationEnd',function(envent){
+						$('.bien_mat_sang_phai').removeClass('bien_mat_sang_phai');	
+					});
+					slideTruoc.addClass('di_vao_tu_ben_trai').one('webkitAnimationEnd',function(){
+						//bỏ class active của slide vừa biến mắt sang trái
+						$('.active').removeClass('active');
+						//cho slide mới đi từ phải vào class active
+						$('.di_vao_tu_ben_trai').addClass('active').removeClass('di_vao_tu_ben_trai');
+						
+					});
+					dots[slideHienTai-1].className += " dotActive";
+
+				}
+				
+			});
+			for (var i = 0, len = dots.length; i < len; i++)
+			{
+			    (function(indexSlide){
+			        dots[i].onclick = function(){
+						var slides=$('._1slide');
+						$('.dotActive').removeClass('dotActive');
+						$('.active').removeClass('active');
+						slides[indexSlide].className += " active";
+						dots[indexSlide].className += " dotActive";
+						if(indexSlide===3)
+							slideHienTai=0;
+						else
+						   slideHienTai=indexSlide+ 1;
+					}
+			    })(i);
+
+			}
+			// setInterval(function(){
+			// 	var slideSau=$('.active').next();
+			// 	var slideFirst=$('._1slide').first();
+			// 	var slideLastest=$('._1slide').last();
+			// 	slideHienTai+=1;
+			// 	if(slideHienTai===1){
+			// 		slideLastest.addClass('bien_mat_sang_trai').one('webkitAnimationEnd',function(envent){
+			// 			$('.bien_mat_sang_trai').removeClass('bien_mat_sang_trai');
+			// 		});
+			// 		slideFirst.addClass('di_vao_tu_ben_phai').one('webkitAnimationEnd',function(){
+			// 			$('.active').removeClass('active');
+			// 			$('.di_vao_tu_ben_phai').addClass('active').removeClass('di_vao_tu_ben_phai');
+			// 		});
+					
+			// 	}
+			// 	else{
+			// 		$('.active').addClass('bien_mat_sang_trai').one('webkitAnimationEnd',function(envent){
+			// 			$('.bien_mat_sang_trai').removeClass('bien_mat_sang_trai');
+			// 		});
+			// 		slideSau.addClass('di_vao_tu_ben_phai').one('webkitAnimationEnd',function(){
+			// 			//bỏ class active của slide vừa biến mắt sang trái
+			// 			$('.active').removeClass('active');
+			// 			//cho slide mới đi từ phải vào class active
+			// 			$('.di_vao_tu_ben_phai').addClass('active').removeClass('di_vao_tu_ben_phai');
+			// 		});
+			// 	}
+			// 	if(slideHienTai===4){				
+			// 		slideHienTai=0;
+			// 	}
+				
+			// },3000);
+		});
+	</script>
+</body>
+</html>
