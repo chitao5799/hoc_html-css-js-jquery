@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flappy bird</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<canvas id="gamezone" width="900" height="500"></canvas>
+	<p id="score">score: 0</p>
+	<script type="text/javascript">
+		var canvas=document.getElementById('gamezone');
+		var context=canvas.getContext('2d');
+		var scoreShow=document.getElementById('score');
+
+		var birdimg=new Image();
+		var hinhnenchinh=new Image();
+		var ongtren=new Image();
+		var ongduoi=new Image();
+		birdimg.src='./img/bird.png';
+		hinhnenchinh.src='./img/nenchinh.png';
+		ongtren.src='./img/ongtren.png';
+		ongduoi.src='./img/ongduoi.png';
+
+		var score=0;
+		var khoangcachhaiong=140;
+		var khoangcachdenongduoi;
+		//tạo ra 1 object chim với tọa độ x,y là 1 nửa canvas
+		var bird={
+			x:hinhnenchinh.width/5,
+			y:hinhnenchinh.height/2
+		}
+		var ong=[]; //tạo ra mảng ống để chứa các ống di chuyển
+		ong[0]={
+			x:canvas.width,
+			y:0   
+			//khởi tạo ống đầu tiên nằm bên phải ngoài cùng
+		}
+
+		//tạo function để chạy chò trơi
+		function run(){
+			//load ảnh vào
+			context.drawImage(hinhnenchinh,0,0);
+			context.drawImage(birdimg,bird.x,bird.y);
+			for(var i=0;i<ong.length;i++){
+				khoangcachdenongduoi=ongtren.height+khoangcachhaiong;
+				context.drawImage(ongtren,ong[i].x,ong[i].y);
+				//vẽ ống trên theo tọa độ của ống đó
+				//ống dưới phụ thuộc ống trên
+				context.drawImage(ongduoi,ong[i].x,ong[i].y+khoangcachdenongduoi);
+				//lấy vị trí ống trên cống khoảng cách đến ống dưới vì tý nữa random nó lên xuống
+				ong[i].x-=5;//để ống di chuyển từ phải sang trái
+
+				//lập trình thêm ống khi ống di chuyển đến giữa nó sẽ tạo thêm 1 ống nữa
+				if(ong[i].x==canvas.width/2){
+					ong.push({
+						x:canvas.width,
+						y:Math.floor(Math.random()*ongtren.height)-ongtren.height
+					});
+					//math.random -> giá trị [0-1]
+				}
+				if(ong[i].x==0)
+					ong.slice(0,1);
+					//nếu ống đụng lề trái thì xóa nó đi để tránh mảng ống bị đầy lầm chậm
+				if(ong[i].x==bird.x)
+					score++;
+				//làm cái thua
+				if(bird.y+birdimg.height==canvas.height ||
+				bird.x+birdimg.width>=ong[i].x && bird.x <= ong[i].x+ongtren.width
+				&& (bird.y<=ong[i].y+ongtren.height ||
+				bird.y+birdimg.height>=ong[i].y+khoangcachdenongduoi)
+				){
+					return;
+				}
+			}
+			/*điều kiện thua đầu tiên là đụng đất
+			điều kiện 2 là so sánh vị trí x con chim >=với cái ống
+			và  so sánh vị trí y 
+			*/
+
+
+
+			scoreShow.innerHTML="score: "+score;
+			//cho bird rơi xuống
+			bird.y+=3;
+			requestAnimationFrame(run); //thực hiện chạy nhiều lần như setInterval- 60 lần/giây
+		}
+		document.addEventListener("keydown",function(){
+			bird.y-=60;
+		})
+		run();
+	</script>
+</body>
+</html>
